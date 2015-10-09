@@ -20,11 +20,12 @@
                     Shopping
                     <h:outputText value=",  #{request.userPrincipal.name}" rendered="#{request.userPrincipal !=null} "/>
 				</h:link>
-				<div class="nav-collapse collapse">
+<!--				<div class="nav-collapse collapse">
 					<ul class="nav">
 						<li><a href="http://forge.jboss.org/docs/important_plugins/ui-scaffolding.html">How to Customize</a></li>
 					</ul>
 				</div>
+-->
 			</div>
 		</div>
 	</div>
@@ -32,7 +33,7 @@
 	<div class="container forgecontainer">
 		<div id="navigation">
 			<h:link id="homeLink" outcome="/index.xhtml">
-				<img src='#{resource["new-item-cart-icon.jpg"]}' alt="Get Shopping..." border="0" />
+				<img src='#{resource["new-item-cart-icon.jpg"]}' height="60" width="60" alt="Get Shopping..." border="0" />
 			</h:link>
 			<ul>
 				<li>
@@ -53,11 +54,16 @@
 		</div>
 	</div>
 
-	<footer>
+<!--	<footer>
 		<div id="footer-wrapper">
-	    	<p>Powered by <a href="http://jboss.org/forge">Forge</a></p>
+	    	<p>Powered by <a href="mailto:thorsten.elfert@gmail.com">Thorsten</a></p>
 	    </div>
-	</footer>
+	</footer>-->
+          <footer>
+            <div id="footer-wrapper">
+                <p>#{developer} #{applicationBuildVersion}</p>
+            </div>
+        </footer>
 
 </h:body>
 </html>
