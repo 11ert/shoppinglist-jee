@@ -1,4 +1,4 @@
-package org.shopping.view;
+package de.thorsten.shopping.view;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;

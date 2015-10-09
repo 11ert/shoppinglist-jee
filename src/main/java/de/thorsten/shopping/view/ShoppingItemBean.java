@@ -1,4 +1,4 @@
-package org.shopping.view;
+package de.thorsten.shopping.view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.shopping.model.ShoppingItem;
+import de.thorsten.shopping.model.ShoppingItem;
 
 /**
  * Backing bean for ShoppingItem entities.
