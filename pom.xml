@@ -9,10 +9,10 @@
             <name>thorsten.elfert@gmail.com</name>
         </developer>
     </developers>
-    <artifactId>shopping</artifactId>
+    <artifactId>shoppinglist</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Shopping</name>
+    <name>Shoppinglist</name>
     <description>Server side implementation of Shopping App </description>
   
     <scm>
