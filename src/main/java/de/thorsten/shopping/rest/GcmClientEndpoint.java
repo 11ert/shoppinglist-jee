@@ -14,7 +14,7 @@ import javax.ws.rs.core.UriBuilder;
 import de.thorsten.shopping.model.GcmClient;
 
 /**
- * 
+ * For Registration of the Device using GCM
  */
 @Stateless
 @Path("/gcmclients")
