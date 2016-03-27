@@ -11,31 +11,31 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import de.thorsten.shopping.model.ShoppingItem;
+import de.thorsten.shopping.model.GcmClient;
 
 /**
  * 
  */
 @Stateless
-@Path("/shoppingitems")
-public class ShoppingItemEndpoint
+@Path("/gcmclients")
+public class GcmClientEndpoint
 {
    @PersistenceContext(unitName = "shopping-persistence-unit")
    private EntityManager em;
 
    @POST
-   @Consumes("application/json")
-   public Response create(ShoppingItem entity)
+   @Consumes("application/xml")
+   public Response create(GcmClient entity)
    {
       em.persist(entity);
-      return Response.created(UriBuilder.fromResource(ShoppingItemEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
+      return Response.created(UriBuilder.fromResource(GcmClientEndpoint.class).path(String.valueOf(entity.getId())).build()).build();
    }
 
    @DELETE
    @Path("/{id:[0-9][0-9]*}")
    public Response deleteById(@PathParam("id") Long id)
    {
-      ShoppingItem entity = em.find(ShoppingItem.class, id);
+      GcmClient entity = em.find(GcmClient.class, id);
       if (entity == null)
       {
          return Response.status(Status.NOT_FOUND).build();
@@ -46,12 +46,12 @@ public class ShoppingItemEndpoint
 
    @GET
    @Path("/{id:[0-9][0-9]*}")
-   @Produces("application/json")
+   @Produces("application/xml")
    public Response findById(@PathParam("id") Long id)
    {
-      TypedQuery<ShoppingItem> findByIdQuery = em.createQuery("SELECT DISTINCT s FROM ShoppingItem s WHERE s.id = :entityId ORDER BY s.id", ShoppingItem.class);
+      TypedQuery<GcmClient> findByIdQuery = em.createQuery("SELECT DISTINCT g FROM GcmClient g WHERE g.id = :entityId ORDER BY g.id", GcmClient.class);
       findByIdQuery.setParameter("entityId", id);
-      ShoppingItem entity;
+      GcmClient entity;
       try
       {
          entity = findByIdQuery.getSingleResult();
@@ -68,17 +68,17 @@ public class ShoppingItemEndpoint
    }
 
    @GET
-   @Produces("application/json")
-   public List<ShoppingItem> listAll()
+   @Produces("application/xml")
+   public List<GcmClient> listAll()
    {
-      final List<ShoppingItem> results = em.createQuery("SELECT DISTINCT s FROM ShoppingItem s ORDER BY s.id", ShoppingItem.class).getResultList();
+      final List<GcmClient> results = em.createQuery("SELECT DISTINCT g FROM GcmClient g ORDER BY g.id", GcmClient.class).getResultList();
       return results;
    }
 
    @PUT
    @Path("/{id:[0-9][0-9]*}")
-   @Consumes("application/json")
-   public Response update(ShoppingItem entity)
+   @Consumes("application/xml")
+   public Response update(GcmClient entity)
    {
       entity = em.merge(entity);
       return Response.noContent().build();
