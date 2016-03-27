@@ -15,6 +15,7 @@ import de.thorsten.shopping.model.GcmClient;
 
 /**
  * For Registration of the Device using GCM
+ * Each Device gets its own registration id
  */
 @Stateless
 @Path("/gcmclients")
