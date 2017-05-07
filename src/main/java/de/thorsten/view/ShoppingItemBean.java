@@ -25,6 +25,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import de.thorsten.shopping.model.ShoppingItem;
+import java.util.logging.Logger;
+import javax.enterprise.event.Event;
 
 /**
  * Backing bean for ShoppingItem entities.
@@ -50,6 +52,13 @@ public class ShoppingItemBean implements Serializable
 
    private Long id;
 
+   @Inject
+   private Logger log;
+
+   @Inject
+   private Event<ShoppingItem> shoppingItemEventSrc;
+
+   
    public Long getId()
    {
       return this.id;
@@ -122,6 +131,8 @@ public class ShoppingItemBean implements Serializable
          if (this.id == null)
          {
             this.entityManager.persist(this.shoppingItem);
+            log.info("ShoppingItemBEan vor fire");
+            this.shoppingItemEventSrc.fire(this.shoppingItem);
             return "search?faces-redirect=true";
          }
          else

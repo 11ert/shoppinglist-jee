@@ -25,7 +25,7 @@ public class GcmClientEndpoint
    private EntityManager em;
 
    @POST
-   @Consumes("application/xml")
+   @Consumes("application/json")
    public Response create(GcmClient entity)
    {
       em.persist(entity);
@@ -47,7 +47,7 @@ public class GcmClientEndpoint
 
    @GET
    @Path("/{id:[0-9][0-9]*}")
-   @Produces("application/xml")
+   @Produces("application/json")
    public Response findById(@PathParam("id") Long id)
    {
       TypedQuery<GcmClient> findByIdQuery = em.createQuery("SELECT DISTINCT g FROM GcmClient g WHERE g.id = :entityId ORDER BY g.id", GcmClient.class);
@@ -69,7 +69,7 @@ public class GcmClientEndpoint
    }
 
    @GET
-   @Produces("application/xml")
+   @Produces("application/json")
    public List<GcmClient> listAll()
    {
       final List<GcmClient> results = em.createQuery("SELECT DISTINCT g FROM GcmClient g ORDER BY g.id", GcmClient.class).getResultList();
@@ -78,7 +78,7 @@ public class GcmClientEndpoint
 
    @PUT
    @Path("/{id:[0-9][0-9]*}")
-   @Consumes("application/xml")
+   @Consumes("application/json")
    public Response update(GcmClient entity)
    {
       entity = em.merge(entity);
